@@ -2,6 +2,9 @@ import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+
+import { RecoilRoot } from 'recoil'
+
 import { DefaultSeo } from 'next-seo'
 import SEO from '../next-seo.config'
 import * as gtag from '../lib/gtag'
@@ -25,13 +28,13 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [router.events])
 
   return (
-    <>
+    <RecoilRoot>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
-    </>
+    </RecoilRoot>
   )
 }
 

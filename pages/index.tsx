@@ -1,23 +1,22 @@
 import { NextSeo } from 'next-seo'
-import Image from 'next/image'
+import ControlPanel from '../components/ControlPanel'
 import Layout from '../components/Layout'
 import styles from '../styles/Home.module.scss'
-import building from '../public/building.jpg'
 
 const Home: React.FC = () => {
   return (
     <Layout>
       <NextSeo
-        title="NextSSS"
-        description="Next.js Static Site Starter"
+        title="アソビノンサーバー"
+        description="アソビノンサーバー管理サイト"
         openGraph={{
           type: 'website',
         }}
       />
-      <h1 className={`text-center uppercase ${styles.title}`}>Hello, World!</h1>
-      <figure className="mt-8">
-        <Image src={building} alt="Building" />
-      </figure>
+      <h1 className={`text-center uppercase ${styles.title}`}>
+        アソビノンサーバー
+      </h1>
+      <ControlPanel />
     </Layout>
   )
 }
