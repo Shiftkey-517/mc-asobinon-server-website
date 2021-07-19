@@ -34,10 +34,8 @@ export default async function execCommand(
     await connect().then(async (server) => {
       if (server) {
         return server.execCommand(command).then((result) => {
-          console.debug('STDOUT: ' + result.stdout)
-
           if (result.stderr) {
-            console.error('STDERR: ' + result.stderr)
+            console.error(`STDERR detected: ${result.stderr}`)
             return res.status(500).json({
               message: `${result.stderr}`,
             })
