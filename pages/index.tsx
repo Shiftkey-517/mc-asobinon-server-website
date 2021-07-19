@@ -12,8 +12,13 @@ const Home: React.FC = () => {
           type: 'website',
         }}
       />
-      <div>
-        <ControlPanel />
+      <div className="justify-center flex flex-col-reverse md:flex-col">
+        <div className="md:mb-8">
+          <iframe width="100%" height="600" src="http://mc.asobinon.org:8123" />
+        </div>
+        <div className="mb-8">
+          <ControlPanel />
+        </div>
       </div>
     </Layout>
   )
