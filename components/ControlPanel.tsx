@@ -4,12 +4,26 @@ const ControlPanel: React.FC = () => {
   const { user } = useAuthentication()
   return (
     <div className="p-3">
-      {user ? (
-        <>
-          <pre>{JSON.stringify(user, null, '\t')}</pre>
-        </>
+      {user && user.isAdmin ? (
+        <>コントロールパネルへようこそ</>
       ) : (
-        <>あなたは操作できません</>
+        <>
+          {user ? (
+            <p>
+              あなたは操作できません。
+              <a
+                href="https://github.com/sasigume/mc-asobinon-server-website#readme"
+                target="_blank"
+                rel="noreferrer"
+              >
+                こちら
+              </a>
+              の手順で認証を申請してください
+            </p>
+          ) : (
+            <p>ログインしてください</p>
+          )}
+        </>
       )}
     </div>
   )

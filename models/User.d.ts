@@ -5,4 +5,5 @@ export interface User {
   email: string
   photoURL: string
   twitterIdNum?: string
+  isAdmin?: boolean
 }

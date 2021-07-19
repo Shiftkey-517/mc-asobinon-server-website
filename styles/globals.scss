@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  p > a {
+    @apply underline;
+  }
   h1 {
     @apply text-4xl;
     @apply font-bold;

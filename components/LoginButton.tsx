@@ -5,7 +5,7 @@ import { SITE_FULL_URL } from '../lib/constants'
 const LoginButton: React.FC = () => {
   const { user } = useAuthentication()
   return (
-    <div className="p-3">
+    <>
       {user ? (
         <>
           <div className="flex items-center align-middle justify-center gap-8">
@@ -40,7 +40,7 @@ const LoginButton: React.FC = () => {
           ログイン
         </a>
       )}
-    </div>
+    </>
   )
 }
 
