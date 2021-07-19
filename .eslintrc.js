@@ -37,7 +37,7 @@ const config = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-unused-vars': [
-      2,
+      1,
       {
         argsIgnorePattern: '^_',
       },
@@ -45,7 +45,7 @@ const config = {
     'no-console': [
       2,
       {
-        allow: ['warn', 'error'],
+        allow: ['warn', 'error', 'debug'],
       },
     ],
   },
