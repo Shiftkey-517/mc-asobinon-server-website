@@ -1,0 +1,45 @@
+{
+  "short_name": "ASOBINON",
+  "name": "アソビノン",
+  "icons": [
+    {
+      "src": "/pwa/manifest-icon-192x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/pwa/manifest-icon-512x.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ff3f00",
+  "shortcuts": [
+    {
+      "name": "Minecraft (BE)",
+      "short_name": "マイクラBE",
+      "description": "Minecraftトップ",
+      "url": "/minecraft/?source=pwa",
+      "icons": [{ "src": "/pwa/manifest-icon-192x.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Minecraft (JE)",
+      "short_name": "マイクラJE",
+      "description": "Minecraft Java Editionトップ",
+      "url": "/minecraft-je/?source=pwa",
+      "icons": [{ "src": "/pwa/manifest-icon-192x.png", "sizes": "192x192" }]
+    }
+  ],
+  "description": "アソビノン。GitHubで管理するゲーム攻略サイト",
+  "screenshots": [
+    {
+      "src": "/ogp/ogp-1200x630.png",
+      "type": "image/png",
+      "sizes": "1200x630"
+    }
+  ]
+}
