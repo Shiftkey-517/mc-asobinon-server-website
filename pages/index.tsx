@@ -12,7 +12,9 @@ const Home: React.FC = () => {
           type: 'website',
         }}
       />
-      <ControlPanel />
+      <div>
+        <ControlPanel />
+      </div>
     </Layout>
   )
 }

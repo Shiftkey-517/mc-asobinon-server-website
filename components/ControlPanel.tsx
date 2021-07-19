@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { useAuthentication } from '../hooks/authentication'
 import { CommandButton } from './CommandButton'
 
 const ControlPanel: React.FC = () => {
   const { user } = useAuthentication()
   const commandPath = 'bash /home/minecraft/script/'
+  const [input, setInput] = useState('こんにちは')
   return (
     <div className="p-3">
       {user && user.isAdmin ? (
@@ -14,15 +16,16 @@ const ControlPanel: React.FC = () => {
           </p>
           <div className="flex flex-col gap-6 justify-items-start">
             <CommandButton
-              bg="black"
-              label="CPU使用率確認"
-              command={`mpstat`}
+              bg="#fb76e9"
+              label="sayコマンドを自由に入力"
+              command={`screen -p 0 -S minecraft -X eval 'stuff "say ${input}\\015"'`}
             />
-            <CommandButton
-              bg="#888"
-              label="起動中か確認"
-              command={`screen -ls`}
+            <textarea
+              className="border-2 rounded-xl p-3 border-gray-500"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
+            <hr />
             <CommandButton
               bg="green"
               label="経験値配布"
@@ -38,12 +41,22 @@ const ControlPanel: React.FC = () => {
               label="セーブ・メモリチェック・メッセージ全部"
               command={commandPath + 'check_screen.sh'}
             />
+            <hr />
+            <CommandButton
+              bg="black"
+              label="CPU使用率確認"
+              command={`mpstat`}
+            />
+            <CommandButton
+              bg="#888"
+              label="起動中か確認"
+              command={`screen -ls`}
+            />
             <CommandButton
               bg="red"
               label="サーバー再起動"
               command={commandPath + 'restart.sh'}
             />
-            <CommandButton bg="#fb76e9" label="おまけ: SL" command={`sl`} />
           </div>
         </>
       ) : (
