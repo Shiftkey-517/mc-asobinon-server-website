@@ -6,7 +6,7 @@
 
 <https://tweeterid.com/>
 
-**あなたのユーザー名ではなく「数字ID」**が必要です。
+**あなたのユーザー名ではなく「数字ID」** が必要です。
 
 ### 2. プルリク
 
@@ -16,7 +16,7 @@
 
 ### 3. sasigumeのmergeを待つ
 
-mergeしない限り操作はできません。
+[sasigume]()がmergeしない限り操作はできません。
 
 ## Special Thanks
 

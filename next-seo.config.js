@@ -5,7 +5,7 @@ const config = {
   openGraph: {
     type: 'article',
     locale: 'ja_JP',
-    site_name: 'NextSSS',
+    site_name: 'アソビノンサーバー管理サイト',
   },
   twitter: {
     cardType: 'summary_large_image',

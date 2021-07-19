@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <Layout>
       <NextSeo
-        title="アソビノンサーバー"
+        title="アソビノンサーバー管理サイト"
         description="アソビノンサーバー管理サイト"
         openGraph={{
           type: 'website',

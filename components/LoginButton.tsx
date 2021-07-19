@@ -1,7 +1,7 @@
 import { useAuthentication } from '../hooks/authentication'
 import { login } from '../lib/login'
 import Image from 'next/image'
-import { SITE_FULL_URL } from '../lib/constants'
+
 const LoginButton: React.FC = () => {
   const { user } = useAuthentication()
   return (
@@ -18,7 +18,10 @@ const LoginButton: React.FC = () => {
                   width={32}
                   height={32}
                   alt={`${user.name}のアイコン`}
-                  src={user.photoURL ?? `${SITE_FULL_URL}/favicon.ico`}
+                  src={
+                    user.photoURL ??
+                    `${process.env.NEXT_PUBLIC_HTTPS_URL}/favicon.ico`
+                  }
                 />
               </div>
               <b>{user.name}</b>
