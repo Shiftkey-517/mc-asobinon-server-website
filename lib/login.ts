@@ -5,6 +5,9 @@ export const login = async (): Promise<void> => {
   firebase
     .auth()
     .signInWithPopup(provider)
+    .then(() => {
+      console.debug('Successfully signed in')
+    })
     .catch((e) => {
       console.error(e)
     })

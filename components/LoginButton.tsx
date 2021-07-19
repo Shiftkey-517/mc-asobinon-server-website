@@ -1,5 +1,6 @@
 import { useAuthentication } from '../hooks/authentication'
 import { login } from '../lib/login'
+import { logout } from '../lib/logout'
 import Image from 'next/image'
 
 const LoginButton: React.FC = () => {
@@ -29,7 +30,7 @@ const LoginButton: React.FC = () => {
             <a
               aria-label="ログアウトボタン"
               className="shadow-lg rounded-lg cursor-pointer block p-3 bg-red-500 text-white"
-              onClick={login}
+              onClick={logout}
             >
               ログアウト
             </a>
