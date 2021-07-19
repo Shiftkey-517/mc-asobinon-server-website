@@ -2,7 +2,7 @@ import firebase from '../lib/firebase'
 import { useEffect } from 'react'
 import { atom, useRecoilState } from 'recoil'
 import { User } from '../models/User'
-import { SITE_FULL_URL } from '../lib/constants'
+
 import { ADMIN_TWITTER_NUMIDS } from '../lib/admin'
 
 const userState = atom<User | null>({
@@ -39,7 +39,9 @@ export function useAuthentication(): { user: User | null } {
           isAnonymous: firebaseUser.isAnonymous,
           name: firebaseUser.displayName ?? '未設定',
           email: firebaseUser.email ?? '',
-          photoURL: firebaseUser.photoURL ?? `${SITE_FULL_URL}/favicon.png`,
+          photoURL:
+            firebaseUser.photoURL ??
+            `${process.env.NEXT_PUBLIC_HTTPS_URL}/favicon.png`,
           twitterIdNum,
           isAdmin: checkIsAdmin(twitterIdNum),
         }
