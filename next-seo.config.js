@@ -4,7 +4,7 @@
 const config = {
   openGraph: {
     type: 'article',
-    locale: 'en_US',
+    locale: 'ja_JP',
     site_name: 'NextSSS',
   },
   twitter: {
