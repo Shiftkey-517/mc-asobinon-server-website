@@ -27,25 +27,33 @@ const ControlPanel: React.FC = () => {
             />
             <hr />
             <CommandButton
+              bg="#28e7a9"
+              label="ようこそメッセージ"
+              command={commandPath + 'message.sh'}
+            />
+            <CommandButton
               bg="green"
               label="経験値配布"
               command={commandPath + 'give_exp.sh'}
             />
-            <CommandButton
-              bg="#ff6600"
-              label="セーブ"
-              command={commandPath + 'save_all.sh'}
-            />
+
+            <hr />
             <CommandButton
               bg="blue"
-              label="セーブ・メモリチェック・メッセージ全部"
-              command={commandPath + 'check_screen.sh'}
+              label="メモリチェック"
+              command={commandPath + 'check_memory.sh'}
             />
-            <hr />
+
             <CommandButton
               bg="black"
               label="CPU使用率確認"
               command={`mpstat`}
+            />
+            <hr />
+            <CommandButton
+              bg="#ff6600"
+              label="セーブ"
+              command={commandPath + 'save_all.sh'}
             />
             <CommandButton
               bg="#888"
@@ -54,8 +62,19 @@ const ControlPanel: React.FC = () => {
             />
             <CommandButton
               bg="red"
-              label="サーバー再起動"
-              command={commandPath + 'restart.sh'}
+              label="サーバー起動"
+              command={commandPath + 'start.sh'}
+            />
+            <CommandButton
+              bg="#447722"
+              label="資源ワールド再生成"
+              command={commandPath + 'regen.sh'}
+            />
+            <hr />
+            <CommandButton
+              bg="#2687e8"
+              label="バックアップ一覧 (total10G超えてたらsasigumeに連絡して!)"
+              command={`du -shc /home/minecraft/world_backup/*`}
             />
           </div>
         </>
