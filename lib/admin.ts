@@ -6,4 +6,5 @@ export const ADMIN_TWITTER_NUMIDS = [
   '3250344732', //  @yakisoba_panaki
   '705333201615454209', //  @0505keitan
   '717704337917476864', //  @l0vrz
+  '772073174359953408', //  @Shiftkey_
 ]
