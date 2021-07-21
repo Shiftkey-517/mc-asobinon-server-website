@@ -6,6 +6,7 @@ const ControlPanel: React.FC = () => {
   const { user } = useAuthentication()
   const commandPath = 'bash /home/minecraft/script/'
   const [input, setInput] = useState('こんにちは')
+  const [tweet, setTweet] = useState('ツイート内容')
   return (
     <div className="p-3">
       {user && user.isAdmin ? (
@@ -15,6 +16,17 @@ const ControlPanel: React.FC = () => {
             SSHを遠隔で操作します。決められたコマンドだけ実行でき、連打はできません。
           </p>
           <div className="flex flex-col gap-6 justify-items-start">
+            <CommandButton
+              bg="#2687e8"
+              label="アソビノンのツイッターに投稿する"
+              command={`screen -p 0 -S minecraft -X eval 'stuff "webhooks execute command-tweet ${tweet}\\015"'`}
+            />
+            <textarea
+              className="border-2 rounded-xl p-3 border-gray-500"
+              value={tweet}
+              onChange={(e) => setTweet(e.target.value)}
+            />
+            <hr />
             <CommandButton
               bg="#fb76e9"
               label="sayコマンドを自由に入力"
