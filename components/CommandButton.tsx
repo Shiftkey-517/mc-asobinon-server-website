@@ -48,14 +48,14 @@ export const CommandButton: React.FC<{
         {!used ? (
           <a
             className="p-3 block bg-black rounded-xl cursor-pointer shadow-md hover:shadow-xl"
-            onClick={() =>
+            onClick={() => {
+              setUsed(true)
               sendCommand(command).then((m) => {
-                setUsed(true)
                 setMessage(m.message)
                 setStatus(m.statusText)
                 setDate(m.date)
               })
-            }
+            }}
           >
             実行!
           </a>
