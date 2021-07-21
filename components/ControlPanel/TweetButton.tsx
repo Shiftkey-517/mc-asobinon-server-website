@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { TwitterTweetEmbed } from 'react-twitter-embed'
+const { TwitterTweetEmbed } = require('react-twitter-embed')
 export const TweetButton: React.FC = () => {
   const [tweet, setTweet] = useState<string>()
   const [message, setMessage] = useState<string>()
