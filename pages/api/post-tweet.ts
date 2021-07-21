@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 export default async function postTweet(
   req: NextApiRequest,
   res: NextApiResponse
-) {
+): Promise<void> {
   const token = process.env.API_TOKEN
   if (req.method !== 'POST') {
     return res.status(405).json({
@@ -16,24 +16,30 @@ export default async function postTweet(
     })
   }
 
-  const body = req.body
-
+  const body = req.body as string | undefined
   if (!body) {
     return res.status(500).json({
       message: `ERROR: Please add body`,
     })
   }
-  console.debug(`Sending ${body}`)
   const api = process.env.NEXT_PUBLIC_TWITTER_API ?? ''
 
   try {
-    await fetch(api, { method: 'POST', body: body })
+    console.debug({ sending: body })
+    await fetch(api, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
       .then(async (apiResponse) => {
         const json = await apiResponse.json()
         if (apiResponse.ok) {
-          res.status(200).json(json)
+          return res.status(200).json(json)
         } else {
-          res.status(500).json(
+          return res.status(500).json(
             json ?? {
               message: `ERROR: No response`,
             }
