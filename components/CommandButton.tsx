@@ -28,11 +28,18 @@ export const CommandButton: React.FC<{
   bg: string
   label: string
   command: string
-}> = ({ bg, command, label }) => {
+  isMcCommand?: boolean
+}> = ({ bg, command, label, isMcCommand }) => {
   const [message, setMessage] = useState<string>()
   const [status, setStatus] = useState<string>()
   const [date, setDate] = useState<string>()
   const [used, setUsed] = useState(false)
+
+  let actualCommand = command
+  // マイクラのコマンドの場合はscreenに送る
+  if (isMcCommand) {
+    actualCommand = `screen -p 0 -S minecraft -X eval 'stuff "${command}\\015"'`
+  }
   return (
     <div
       style={{ background: bg ?? '#fff' }}
@@ -50,7 +57,7 @@ export const CommandButton: React.FC<{
             className="p-3 block bg-black rounded-xl cursor-pointer shadow-md hover:shadow-xl"
             onClick={() => {
               setUsed(true)
-              sendCommand(command).then((m) => {
+              sendCommand(actualCommand).then((m) => {
                 setMessage(m.message)
                 setStatus(m.statusText)
                 setDate(m.date)
@@ -65,7 +72,7 @@ export const CommandButton: React.FC<{
       </div>
 
       <pre className="font-mono bg-gray-700 mt-3 p-3 rounded-xl">
-        <div>{`minecraft@sasigume-mc:~$ ${command}`}</div>
+        <div>{`minecraft@sasigume-mc:~$ ${actualCommand}`}</div>
         <div>{message}</div>
       </pre>
     </div>

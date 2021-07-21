@@ -1,12 +1,58 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuthentication } from '../hooks/authentication'
 import { CommandButton } from './CommandButton'
+
+const NGwords: string[] = [
+  'うんこ',
+  'しっこ',
+  'あああ',
+  '死ね',
+  'aaaaa',
+  'bbbbb',
+  'おっぱい',
+  '県',
+  '市',
+  '郡',
+  '町',
+  '区',
+  '安藤',
+  '妙法寺',
+  'GM',
+  'あんま',
+  'かたわ',
+  '蚊',
+  '片眼',
+  '人足',
+  '変態',
+  '野獣先輩',
+  '乞食',
+  '朝鮮人',
+  '支那',
+  '土人',
+  'ガイジ',
+  'キチガイ',
+  'セクハラ',
+  'アル中',
+  'ルンペン',
+  '殺す',
+  'コロシ',
+]
 
 const ControlPanel: React.FC = () => {
   const { user } = useAuthentication()
   const commandPath = 'bash /home/minecraft/script/'
   const [input, setInput] = useState('こんにちは')
   const [tweet, setTweet] = useState('ツイート内容')
+  const [ng, setNg] = useState(false)
+
+  useEffect(() => {
+    let check = 0
+    NGwords.forEach((ng) => {
+      if (tweet === ng) check++
+    })
+    if (check === 1) setNg(true)
+  }, [tweet])
+
   return (
     <div className="p-3">
       {user && user.isAdmin ? (
@@ -16,11 +62,18 @@ const ControlPanel: React.FC = () => {
             SSHを遠隔で操作します。決められたコマンドだけ実行でき、連打はできません。
           </p>
           <div className="flex flex-col gap-6 justify-items-start">
-            <CommandButton
-              bg="#2687e8"
-              label="アソビノンのツイッターに投稿する"
-              command={`screen -p 0 -S minecraft -X eval 'stuff "webhooks execute command-tweet ${tweet}\\015"'`}
-            />
+            {ng ? (
+              <div>
+                あなたはNGワードをツイートしようとしました。やめてください
+              </div>
+            ) : (
+              <CommandButton
+                bg="#2687e8"
+                label="アソビノンのツイッターに投稿する"
+                isMcCommand
+                command={`webhooks execute command-tweet ${tweet}`}
+              />
+            )}
             <textarea
               className="border-2 rounded-xl p-3 border-gray-500"
               value={tweet}
@@ -30,7 +83,8 @@ const ControlPanel: React.FC = () => {
             <CommandButton
               bg="#fb76e9"
               label="sayコマンドを自由に入力"
-              command={`screen -p 0 -S minecraft -X eval 'stuff "say ${input}\\015"'`}
+              isMcCommand
+              command={`say ${input}`}
             />
             <textarea
               className="border-2 rounded-xl p-3 border-gray-500"
