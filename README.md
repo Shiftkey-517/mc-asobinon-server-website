@@ -1,5 +1,9 @@
 # mc-asobinon-server-website
 
+マイクラサーバーを遠隔操作します。
+
+[サーバーの説明](https://asobinon.org/ASOBINON/mcserver)
+
 ## サーバーを操作したい方へ
 
 ### 1. Twitterの数字IDを調べる
@@ -16,7 +20,7 @@
 
 ### 3. sasigumeのmergeを待つ
 
-[sasigume]()がmergeしない限り操作はできません。
+[sasigume](https://github.com/sasigume)がmergeしない限り操作はできません。
 
 ## Special Thanks
 
