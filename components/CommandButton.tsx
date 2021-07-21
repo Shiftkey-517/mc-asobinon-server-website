@@ -32,6 +32,7 @@ export const CommandButton: React.FC<{
   const [message, setMessage] = useState<string>()
   const [status, setStatus] = useState<string>()
   const [date, setDate] = useState<string>()
+  const [used, setUsed] = useState(false)
   return (
     <div
       style={{ background: bg ?? '#fff' }}
@@ -44,11 +45,12 @@ export const CommandButton: React.FC<{
         </h3>
 
         {/* 実行後はボタンを隠す */}
-        {!status ? (
+        {!used ? (
           <a
             className="p-3 block bg-black rounded-xl cursor-pointer shadow-md hover:shadow-xl"
             onClick={() =>
               sendCommand(command).then((m) => {
+                setUsed(true)
                 setMessage(m.message)
                 setStatus(m.statusText)
                 setDate(m.date)
