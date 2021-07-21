@@ -7,6 +7,7 @@ const config = {
     SSH_USERNAME: process.env.SSH_USERNAME,
     SSH_PASSWORD: process.env.SSH_PASSWORD,
     API_TOKEN: process.env.API_TOKEN,
+    TWITTER_API_TOKEN: process.env.TWITTER_API_TOKEN,
   },
   images: {
     domains: ['pbs.twimg.com'],
