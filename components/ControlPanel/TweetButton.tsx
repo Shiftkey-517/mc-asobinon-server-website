@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import { TwitterTweetEmbed } from 'react-twitter-embed'
 export const TweetButton: React.FC = () => {
   const [tweet, setTweet] = useState<string>()
   const [message, setMessage] = useState<string>()
@@ -15,7 +15,6 @@ export const TweetButton: React.FC = () => {
   }, [tweet])
 
   const api = `${process.env.NEXT_PUBLIC_HTTPS_URL}/api/post-tweet`
-  const tweetUrl = `https://twitter.com/asobinon/status/${tweetId}`
 
   const send = async () => {
     return await fetch(api, {
@@ -75,15 +74,8 @@ export const TweetButton: React.FC = () => {
         <pre className="whitespace-pre-line font-mono bg-gray-700 mt-3 p-3 rounded-xl">
           <div>ツイートAPIからのメッセージ:</div>
           <div>{message}</div>
-          {tweetId && (
-            <p>
-              ツイート:{' '}
-              <a href={tweetUrl} target="_blank" rel="noreferrer">
-                {tweetUrl}
-              </a>
-            </p>
-          )}
         </pre>
+        {tweetId && <TwitterTweetEmbed tweetId={tweetId} />}
       </div>
       <textarea
         className="border-2 rounded-xl p-3 border-gray-500"
